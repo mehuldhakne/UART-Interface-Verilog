@@ -1,0 +1,185 @@
+<svg viewBox="0 0 1010 558" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+
+<defs>
+  <marker id="ah-b" viewBox="0 0 10 8" refX="10" refY="4" markerWidth="7" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 4 L 0 8 z" fill="#1a3a8f"/>
+  </marker>
+  <marker id="ah-t" viewBox="0 0 10 8" refX="10" refY="4" markerWidth="7" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 4 L 0 8 z" fill="#0d6e56"/>
+  </marker>
+</defs>
+
+<rect width="1010" height="558" fill="white"/>
+
+<!-- ===== MAIN TITLE ===== -->
+<text x="505" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a2e">UART FSM State Machine Diagrams</text>
+<text x="505" y="42" text-anchor="middle" font-size="10" fill="#666">Source: design_code.v  |  clk_value=100,000  baud=9600  wait_count=10 cycles/bit</text>
+
+<!-- Section headers -->
+<rect x="108" y="52" width="258" height="26" rx="5" fill="#1a3a8f"/>
+<text x="237" y="70" text-anchor="middle" font-size="12.5" font-weight="bold" fill="white">TX State Machine  (3 states)</text>
+
+<rect x="644" y="52" width="258" height="26" rx="5" fill="#0d6e56"/>
+<text x="773" y="70" text-anchor="middle" font-size="12.5" font-weight="bold" fill="white">RX State Machine  (3 states)</text>
+
+<!-- Centre divider -->
+<line x1="505" y1="52" x2="505" y2="542" stroke="#e0e0e0" stroke-width="1.5" stroke-dasharray="7,4"/>
+
+<!-- ======================================================= -->
+<!--                      TX  FSM                            -->
+<!-- ======================================================= -->
+<!-- State boxes centred at x=237 -->
+<!-- IDLE  centre (237,115)  box (158,88)-(316,142) -->
+<!-- SEND  centre (237,278)  box (158,251)-(316,305) -->
+<!-- CHECK centre (237,438)  box (158,411)-(316,465) -->
+
+<!-- IDLE — double border (initial state) -->
+<rect x="155" y="85"  width="164" height="57" rx="11" fill="#dde5ff" stroke="#1a3a8f" stroke-width="3"/>
+<rect x="160" y="90"  width="154" height="47" rx="8"  fill="#eef2ff" stroke="#1a3a8f" stroke-width="1"/>
+<text x="237" y="111" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a3a8f">IDLE</text>
+<text x="237" y="127" text-anchor="middle" font-size="8.5" fill="#555" font-style="italic">tx=1 | txData=0 | bitIndex=0</text>
+
+<!-- SEND -->
+<rect x="158" y="248" width="158" height="56" rx="10" fill="#f0f4ff" stroke="#1a3a8f" stroke-width="2"/>
+<text x="237" y="271" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a3a8f">SEND</text>
+<text x="237" y="288" text-anchor="middle" font-size="8.5" fill="#555" font-style="italic">tx ← txData[bitIndex]</text>
+<text x="237" y="299" text-anchor="middle" font-size="8" fill="#888" font-style="italic">shifttx ← {txData[bitIndex],shifttx[9:1]}</text>
+
+<!-- CHECK -->
+<rect x="158" y="408" width="158" height="56" rx="10" fill="#f0f4ff" stroke="#1a3a8f" stroke-width="2"/>
+<text x="237" y="431" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a3a8f">CHECK</text>
+<text x="237" y="448" text-anchor="middle" font-size="8.5" fill="#555" font-style="italic">wait for bitDone pulse</text>
+<text x="237" y="459" text-anchor="middle" font-size="8" fill="#888" font-style="italic">(counts wait_count cycles)</text>
+
+<!-- Initial state dot + arrow → IDLE -->
+<circle cx="130" cy="113" r="6" fill="#1a3a8f"/>
+<line x1="136" y1="113" x2="155" y2="113" stroke="#1a3a8f" stroke-width="1.8" marker-end="url(#ah-b)"/>
+
+<!-- ===== TX ARROWS ===== -->
+
+<!-- 1. IDLE self-loop RIGHT -->
+<path d="M 316 100 C 368 80 374 148 316 132" fill="none" stroke="#1a3a8f" stroke-width="1.6" marker-end="url(#ah-b)"/>
+<text x="378" y="100" font-size="9"   fill="#333" font-weight="bold">start=0</text>
+<text x="378" y="113" font-size="8.5" fill="#777" font-style="italic">/ tx=1, remain</text>
+
+<!-- 2. IDLE → SEND  LEFT side going down -->
+<path d="M 172 142 L 172 248" fill="none" stroke="#1a3a8f" stroke-width="1.6" marker-end="url(#ah-b)"/>
+<text x="96"  y="178" font-size="9"   fill="#333" font-weight="bold">start=1</text>
+<text x="80"  y="191" font-size="8.5" fill="#666" font-style="italic">/ txData={1'b1,txin,1'b0}</text>
+<text x="95"  y="204" font-size="8.5" fill="#666" font-style="italic">bitIndex=0; state←send</text>
+
+<!-- 3. SEND → CHECK  centre going down -->
+<path d="M 237 304 L 237 408" fill="none" stroke="#1a3a8f" stroke-width="1.6" marker-end="url(#ah-b)"/>
+<text x="244" y="342" font-size="9"   fill="#333" font-weight="bold">always</text>
+<text x="244" y="355" font-size="8.5" fill="#777" font-style="italic">(every clock edge)</text>
+<text x="244" y="368" font-size="8.5" fill="#777" font-style="italic">state←check</text>
+
+<!-- 4. CHECK → SEND  LEFT arc going up -->
+<path d="M 158 428 C 68 428 68 268 158 268" fill="none" stroke="#1a3a8f" stroke-width="1.6" marker-end="url(#ah-b)"/>
+<text x="10"  y="326" font-size="9"   fill="#333" font-weight="bold">bitDone=1 &amp;</text>
+<text x="14"  y="339" font-size="9"   fill="#333" font-weight="bold">bitIndex ≤ 9</text>
+<text x="10"  y="352" font-size="8.5" fill="#666" font-style="italic">/ bitIndex++</text>
+<text x="10"  y="365" font-size="8.5" fill="#666" font-style="italic">state←send</text>
+
+<!-- 5. CHECK → IDLE  RIGHT arc (long) -->
+<path d="M 316 428 C 418 428 418 113 316 113" fill="none" stroke="#1a3a8f" stroke-width="1.6" marker-end="url(#ah-b)"/>
+<text x="422" y="254" font-size="9"   fill="#333" font-weight="bold">bitIndex &gt; 9</text>
+<text x="422" y="267" font-size="8.5" fill="#666" font-style="italic">/ bitIndex=0</text>
+<text x="422" y="280" font-size="8.5" fill="#666" font-style="italic">state←idle</text>
+
+<!-- 6. CHECK self-loop BOTTOM -->
+<path d="M 210 464 C 182 504 295 506 268 464" fill="none" stroke="#1a3a8f" stroke-width="1.6" marker-end="url(#ah-b)"/>
+<text x="192" y="516" font-size="9"   fill="#333" font-weight="bold">bitDone=0</text>
+<text x="185" y="529" font-size="8.5" fill="#777" font-style="italic">/ wait (stay in CHECK)</text>
+
+<!-- TX combinational output note -->
+<rect x="108" y="489" width="258" height="30" rx="4" fill="#fafbff" stroke="#c0c8e0" stroke-width="0.8"/>
+<text x="237" y="503" text-anchor="middle" font-size="8.5" fill="#444">Combinational output (assign):</text>
+<text x="237" y="516" text-anchor="middle" font-size="8.5" fill="#1a3a8f" font-weight="bold">txdone = (bitIndex==9 &amp;&amp; bitDone==1) ? 1 : 0</text>
+
+<!-- ======================================================= -->
+<!--                      RX  FSM                            -->
+<!-- ======================================================= -->
+<!-- State boxes centred at x=773 -->
+<!-- RIDLE centre (773,115)  box (694,88)-(852,142) -->
+<!-- RWAIT centre (773,278)  box (694,251)-(852,305) -->
+<!-- RECV  centre (773,438)  box (694,411)-(852,465) -->
+
+<!-- RIDLE — double border (initial state) -->
+<rect x="691" y="85"  width="164" height="57" rx="11" fill="#c8f0dc" stroke="#0d6e56" stroke-width="3"/>
+<rect x="696" y="90"  width="154" height="47" rx="8"  fill="#e4f7ec" stroke="#0d6e56" stroke-width="1"/>
+<text x="773" y="111" text-anchor="middle" font-size="13" font-weight="bold" fill="#0d6e56">RIDLE</text>
+<text x="773" y="127" text-anchor="middle" font-size="8.5" fill="#555" font-style="italic">rindex=0 | rcount=0 | rxdata=0</text>
+
+<!-- RWAIT -->
+<rect x="694" y="248" width="158" height="56" rx="10" fill="#eaf7f1" stroke="#0d6e56" stroke-width="2"/>
+<text x="773" y="271" text-anchor="middle" font-size="13" font-weight="bold" fill="#0d6e56">RWAIT</text>
+<text x="773" y="288" text-anchor="middle" font-size="8.5" fill="#555" font-style="italic">wait ½ bit period</text>
+<text x="773" y="299" text-anchor="middle" font-size="8" fill="#888" font-style="italic">(mid-bit sampling alignment)</text>
+
+<!-- RECV -->
+<rect x="694" y="408" width="158" height="56" rx="10" fill="#eaf7f1" stroke="#0d6e56" stroke-width="2"/>
+<text x="773" y="431" text-anchor="middle" font-size="13" font-weight="bold" fill="#0d6e56">RECV</text>
+<text x="773" y="448" text-anchor="middle" font-size="8.5" fill="#555" font-style="italic">rxdata ← {rx, rxdata[9:1]}</text>
+<text x="773" y="459" text-anchor="middle" font-size="8" fill="#888" font-style="italic">shift rx bit in from MSB side</text>
+
+<!-- Initial state dot + arrow → RIDLE -->
+<circle cx="666" cy="113" r="6" fill="#0d6e56"/>
+<line x1="672" y1="113" x2="691" y2="113" stroke="#0d6e56" stroke-width="1.8" marker-end="url(#ah-t)"/>
+
+<!-- ===== RX ARROWS ===== -->
+
+<!-- 1. RIDLE self-loop RIGHT -->
+<path d="M 852 100 C 902 80 908 148 852 132" fill="none" stroke="#0d6e56" stroke-width="1.6" marker-end="url(#ah-t)"/>
+<text x="912" y="100" font-size="9"   fill="#333" font-weight="bold">rx=1</text>
+<text x="906" y="113" font-size="8.5" fill="#777" font-style="italic">/ stay idle</text>
+
+<!-- 2. RIDLE → RWAIT  centre going down -->
+<path d="M 773 142 L 773 248" fill="none" stroke="#0d6e56" stroke-width="1.6" marker-end="url(#ah-t)"/>
+<text x="780" y="178" font-size="9"   fill="#333" font-weight="bold">rx=0</text>
+<text x="780" y="191" font-size="8.5" fill="#666" font-style="italic">/ start bit detected</text>
+<text x="780" y="204" font-size="8.5" fill="#666" font-style="italic">rcount=0; state←rwait</text>
+
+<!-- 3. RWAIT self-loop LEFT -->
+<path d="M 694 262 C 628 242 625 304 694 282" fill="none" stroke="#0d6e56" stroke-width="1.6" marker-end="url(#ah-t)"/>
+<text x="524" y="256" font-size="9"   fill="#333" font-weight="bold">rcount &lt; wait_count/2</text>
+<text x="557" y="269" font-size="8.5" fill="#666" font-style="italic">/ rcount++</text>
+<text x="537" y="282" font-size="8.5" fill="#666" font-style="italic">state←rwait (stay)</text>
+
+<!-- 4. RWAIT → RECV  centre going down -->
+<path d="M 773 304 L 773 408" fill="none" stroke="#0d6e56" stroke-width="1.6" marker-end="url(#ah-t)"/>
+<text x="780" y="340" font-size="9"   fill="#333" font-weight="bold">rcount ≥ wait_count/2</text>
+<text x="780" y="353" font-size="8.5" fill="#666" font-style="italic">/ rxdata←{rx,rxdata[9:1]}</text>
+<text x="780" y="366" font-size="8.5" fill="#666" font-style="italic">rcount=0; state←recv</text>
+
+<!-- 5. RECV → RWAIT  LEFT arc going up -->
+<path d="M 694 428 C 604 428 604 268 694 268" fill="none" stroke="#0d6e56" stroke-width="1.6" marker-end="url(#ah-t)"/>
+<text x="540" y="326" font-size="9"   fill="#333" font-weight="bold">bitDone=1 &amp;</text>
+<text x="544" y="339" font-size="9"   fill="#333" font-weight="bold">rindex ≤ 9</text>
+<text x="540" y="352" font-size="8.5" fill="#666" font-style="italic">/ rindex++</text>
+<text x="540" y="365" font-size="8.5" fill="#666" font-style="italic">state←rwait</text>
+
+<!-- 6. RECV → RIDLE  RIGHT arc (long, wider) -->
+<path d="M 852 428 C 962 428 962 113 852 113" fill="none" stroke="#0d6e56" stroke-width="1.6" marker-end="url(#ah-t)"/>
+<text x="964" y="243" font-size="9"   fill="#333" font-weight="bold">rindex &gt; 9</text>
+<text x="964" y="256" font-size="8.5" fill="#666" font-style="italic">/ rindex=0</text>
+<text x="964" y="269" font-size="8.5" fill="#666" font-style="italic">state←ridle</text>
+<text x="964" y="282" font-size="8.5" fill="#666" font-style="italic">rxdone pulse↑</text>
+
+<!-- 7. RECV self-loop BOTTOM -->
+<path d="M 748 464 C 720 504 828 506 800 464" fill="none" stroke="#0d6e56" stroke-width="1.6" marker-end="url(#ah-t)"/>
+<text x="726" y="516" font-size="9"   fill="#333" font-weight="bold">bitDone=0</text>
+<text x="718" y="529" font-size="8.5" fill="#777" font-style="italic">/ wait (stay in RECV)</text>
+
+<!-- RX combinational output note -->
+<rect x="644" y="489" width="258" height="30" rx="4" fill="#f5fdf8" stroke="#a0d0b8" stroke-width="0.8"/>
+<text x="773" y="503" text-anchor="middle" font-size="8.5" fill="#444">Combinational output (assign):</text>
+<text x="773" y="516" text-anchor="middle" font-size="8.5" fill="#0d6e56" font-weight="bold">rxdone = (rindex==9 &amp;&amp; bitDone==1) ? 1 : 0</text>
+
+<!-- ===== BOTTOM LEGEND ===== -->
+<rect x="8" y="540" width="994" height="15" rx="3" fill="#f4f4f4" stroke="#ddd" stroke-width="0.8"/>
+<text x="505" y="551" text-anchor="middle" font-size="8.5" fill="#555">
+  Double-border box = Initial state  |  Bold arrow label = transition condition  |  Italic arrow label = action / assignment  |  bitDone = 1-cycle pulse every wait_count (10) clk cycles  |  rxout = rxdata[8:1]
+</text>
+
+</svg>

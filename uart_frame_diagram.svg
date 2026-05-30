@@ -1,0 +1,190 @@
+<svg viewBox="0 0 1120 468" xmlns="http://www.w3.org/2000/svg">
+<rect width="1120" height="468" fill="white"/>
+
+<!-- ===== TITLE ===== -->
+<text x="560" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a1a2e" font-family="Arial, sans-serif">UART Signal Waveform — Character  'A'  (ASCII 0x41 = 0100 0001₂)  at 9600 Baud</text>
+<text x="560" y="44" text-anchor="middle" font-size="11" fill="#555" font-family="Arial, sans-serif">Format: 8N1  |  1 Start Bit + 8 Data Bits (LSB first) + 1 Stop Bit = 10 bits total  |  Bit period = 104.17 μs  |  Full frame = 1.04 ms</text>
+
+<!-- ===== BACKGROUND BANDS ===== -->
+<rect x="100" y="60" width="80"  height="210" fill="#eeeeee"/><!-- IDLE PRE -->
+<rect x="180" y="60" width="80"  height="210" fill="#fde8e8"/><!-- START -->
+<rect x="260" y="60" width="640" height="210" fill="#eef2ff"/><!-- DATA D0-D7 -->
+<rect x="900" y="60" width="80"  height="210" fill="#e4f7ec"/><!-- STOP -->
+<rect x="980" y="60" width="100" height="210" fill="#eeeeee"/><!-- IDLE POST -->
+
+<!-- ===== SLOT BOUNDARY LINES ===== -->
+<line x1="100"  y1="60" x2="100"  y2="270" stroke="#aaa" stroke-width="1"/>
+<line x1="1080" y1="60" x2="1080" y2="270" stroke="#aaa" stroke-width="1"/>
+<line x1="180"  y1="60" x2="180"  y2="270" stroke="#c0392b" stroke-width="1.5"/>
+<line x1="260"  y1="60" x2="260"  y2="270" stroke="#888"    stroke-width="0.8" stroke-dasharray="4,3"/>
+<line x1="340"  y1="60" x2="340"  y2="270" stroke="#888"    stroke-width="0.8" stroke-dasharray="4,3"/>
+<line x1="420"  y1="60" x2="420"  y2="270" stroke="#888"    stroke-width="0.8" stroke-dasharray="4,3"/>
+<line x1="500"  y1="60" x2="500"  y2="270" stroke="#888"    stroke-width="0.8" stroke-dasharray="4,3"/>
+<line x1="580"  y1="60" x2="580"  y2="270" stroke="#888"    stroke-width="0.8" stroke-dasharray="4,3"/>
+<line x1="660"  y1="60" x2="660"  y2="270" stroke="#888"    stroke-width="0.8" stroke-dasharray="4,3"/>
+<line x1="740"  y1="60" x2="740"  y2="270" stroke="#888"    stroke-width="0.8" stroke-dasharray="4,3"/>
+<line x1="820"  y1="60" x2="820"  y2="270" stroke="#888"    stroke-width="0.8" stroke-dasharray="4,3"/>
+<line x1="900"  y1="60" x2="900"  y2="270" stroke="#1a7d45" stroke-width="1.5"/>
+<line x1="980"  y1="60" x2="980"  y2="270" stroke="#aaa"    stroke-width="1"/>
+
+<!-- ===== HIGH / LOW REFERENCE DASHED LINES ===== -->
+<line x1="100" y1="120" x2="1080" y2="120" stroke="#999" stroke-width="0.7" stroke-dasharray="6,5"/>
+<line x1="100" y1="240" x2="1080" y2="240" stroke="#999" stroke-width="0.7" stroke-dasharray="6,5"/>
+
+<!-- ===== Y-AXIS LABELS ===== -->
+<text x="96"  y="115" text-anchor="end" font-size="11" fill="#1a3a8f" font-weight="bold" font-family="Arial">HIGH</text>
+<text x="96"  y="128" text-anchor="end" font-size="9"  fill="#1a3a8f" font-family="Arial">(Logic 1)</text>
+<text x="96"  y="244" text-anchor="end" font-size="11" fill="#b03030" font-weight="bold" font-family="Arial">LOW</text>
+<text x="96"  y="256" text-anchor="end" font-size="9"  fill="#b03030" font-family="Arial">(Logic 0)</text>
+
+<!-- TX/RX label rotated -->
+<text x="22" y="185" text-anchor="middle" font-size="12" fill="#333" font-weight="bold" font-family="Arial" transform="rotate(-90,22,185)">TX / RX LINE</text>
+
+<!-- ===== SAMPLING DASHED LINES (orange) ===== -->
+<!-- T0 x=220 LOW(240)  --> <line x1="220" y1="82" x2="220" y2="240" stroke="#d35400" stroke-width="1.2" stroke-dasharray="4,3"/>
+<!-- T1 x=300 HIGH(120) --> <line x1="300" y1="82" x2="300" y2="120" stroke="#d35400" stroke-width="1.2" stroke-dasharray="4,3"/>
+<!-- T2 x=380 LOW(240)  --> <line x1="380" y1="82" x2="380" y2="240" stroke="#d35400" stroke-width="1.2" stroke-dasharray="4,3"/>
+<!-- T3 x=460 LOW(240)  --> <line x1="460" y1="82" x2="460" y2="240" stroke="#d35400" stroke-width="1.2" stroke-dasharray="4,3"/>
+<!-- T4 x=540 LOW(240)  --> <line x1="540" y1="82" x2="540" y2="240" stroke="#d35400" stroke-width="1.2" stroke-dasharray="4,3"/>
+<!-- T5 x=620 LOW(240)  --> <line x1="620" y1="82" x2="620" y2="240" stroke="#d35400" stroke-width="1.2" stroke-dasharray="4,3"/>
+<!-- T6 x=700 LOW(240)  --> <line x1="700" y1="82" x2="700" y2="240" stroke="#d35400" stroke-width="1.2" stroke-dasharray="4,3"/>
+<!-- T7 x=780 HIGH(120) --> <line x1="780" y1="82" x2="780" y2="120" stroke="#d35400" stroke-width="1.2" stroke-dasharray="4,3"/>
+<!-- T8 x=860 LOW(240)  --> <line x1="860" y1="82" x2="860" y2="240" stroke="#d35400" stroke-width="1.2" stroke-dasharray="4,3"/>
+<!-- T9 x=940 HIGH(120) --> <line x1="940" y1="82" x2="940" y2="120" stroke="#d35400" stroke-width="1.2" stroke-dasharray="4,3"/>
+
+<!-- ===== "↓ Sample Here" LABELS ===== -->
+<text x="220" y="69" text-anchor="middle" font-size="8" fill="#d35400" font-family="Arial" font-weight="bold">↓ Sample Here</text>
+<text x="300" y="69" text-anchor="middle" font-size="8" fill="#d35400" font-family="Arial" font-weight="bold">↓ Sample Here</text>
+<text x="380" y="69" text-anchor="middle" font-size="8" fill="#d35400" font-family="Arial" font-weight="bold">↓ Sample Here</text>
+<text x="460" y="69" text-anchor="middle" font-size="8" fill="#d35400" font-family="Arial" font-weight="bold">↓ Sample Here</text>
+<text x="540" y="69" text-anchor="middle" font-size="8" fill="#d35400" font-family="Arial" font-weight="bold">↓ Sample Here</text>
+<text x="620" y="69" text-anchor="middle" font-size="8" fill="#d35400" font-family="Arial" font-weight="bold">↓ Sample Here</text>
+<text x="700" y="69" text-anchor="middle" font-size="8" fill="#d35400" font-family="Arial" font-weight="bold">↓ Sample Here</text>
+<text x="780" y="69" text-anchor="middle" font-size="8" fill="#d35400" font-family="Arial" font-weight="bold">↓ Sample Here</text>
+<text x="860" y="69" text-anchor="middle" font-size="8" fill="#d35400" font-family="Arial" font-weight="bold">↓ Sample Here</text>
+<text x="940" y="69" text-anchor="middle" font-size="8" fill="#d35400" font-family="Arial" font-weight="bold">↓ Sample Here</text>
+
+<!-- ===== SAMPLING CIRCLES ===== -->
+<circle cx="220" cy="240" r="5.5" fill="#d35400" stroke="white" stroke-width="1.5"/>
+<circle cx="300" cy="120" r="5.5" fill="#d35400" stroke="white" stroke-width="1.5"/>
+<circle cx="380" cy="240" r="5.5" fill="#d35400" stroke="white" stroke-width="1.5"/>
+<circle cx="460" cy="240" r="5.5" fill="#d35400" stroke="white" stroke-width="1.5"/>
+<circle cx="540" cy="240" r="5.5" fill="#d35400" stroke="white" stroke-width="1.5"/>
+<circle cx="620" cy="240" r="5.5" fill="#d35400" stroke="white" stroke-width="1.5"/>
+<circle cx="700" cy="240" r="5.5" fill="#d35400" stroke="white" stroke-width="1.5"/>
+<circle cx="780" cy="120" r="5.5" fill="#d35400" stroke="white" stroke-width="1.5"/>
+<circle cx="860" cy="240" r="5.5" fill="#d35400" stroke="white" stroke-width="1.5"/>
+<circle cx="940" cy="120" r="5.5" fill="#d35400" stroke="white" stroke-width="1.5"/>
+
+<!-- ===== MAIN WAVEFORM ===== -->
+<path d="M 100 120 H 180 V 240 H 260 V 120 H 340 V 240 H 740 V 120 H 820 V 240 H 900 V 120 H 1080"
+  fill="none" stroke="#1a3a8f" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>
+
+<!-- ===== BIT PERIOD BRACKET LINES ===== -->
+<line x1="182" y1="278" x2="258" y2="278" stroke="#bbb" stroke-width="0.8"/>
+<line x1="262" y1="278" x2="338" y2="278" stroke="#bbb" stroke-width="0.8"/>
+<line x1="342" y1="278" x2="418" y2="278" stroke="#bbb" stroke-width="0.8"/>
+<line x1="422" y1="278" x2="498" y2="278" stroke="#bbb" stroke-width="0.8"/>
+<line x1="502" y1="278" x2="578" y2="278" stroke="#bbb" stroke-width="0.8"/>
+<line x1="582" y1="278" x2="658" y2="278" stroke="#bbb" stroke-width="0.8"/>
+<line x1="662" y1="278" x2="738" y2="278" stroke="#bbb" stroke-width="0.8"/>
+<line x1="742" y1="278" x2="818" y2="278" stroke="#bbb" stroke-width="0.8"/>
+<line x1="822" y1="278" x2="898" y2="278" stroke="#bbb" stroke-width="0.8"/>
+<line x1="902" y1="278" x2="978" y2="278" stroke="#bbb" stroke-width="0.8"/>
+
+<!-- ===== BIT PERIOD LABELS (T0-T9) ===== -->
+<text x="140"  y="291" text-anchor="middle" font-size="10" fill="#888" font-family="Arial">IDLE</text>
+<text x="220"  y="291" text-anchor="middle" font-size="11" fill="#222" font-weight="bold" font-family="Courier New">T0</text>
+<text x="300"  y="291" text-anchor="middle" font-size="11" fill="#222" font-weight="bold" font-family="Courier New">T1</text>
+<text x="380"  y="291" text-anchor="middle" font-size="11" fill="#222" font-weight="bold" font-family="Courier New">T2</text>
+<text x="460"  y="291" text-anchor="middle" font-size="11" fill="#222" font-weight="bold" font-family="Courier New">T3</text>
+<text x="540"  y="291" text-anchor="middle" font-size="11" fill="#222" font-weight="bold" font-family="Courier New">T4</text>
+<text x="620"  y="291" text-anchor="middle" font-size="11" fill="#222" font-weight="bold" font-family="Courier New">T5</text>
+<text x="700"  y="291" text-anchor="middle" font-size="11" fill="#222" font-weight="bold" font-family="Courier New">T6</text>
+<text x="780"  y="291" text-anchor="middle" font-size="11" fill="#222" font-weight="bold" font-family="Courier New">T7</text>
+<text x="860"  y="291" text-anchor="middle" font-size="11" fill="#222" font-weight="bold" font-family="Courier New">T8</text>
+<text x="940"  y="291" text-anchor="middle" font-size="11" fill="#222" font-weight="bold" font-family="Courier New">T9</text>
+<text x="1030" y="291" text-anchor="middle" font-size="10" fill="#888" font-family="Arial">IDLE</text>
+
+<!-- ===== BIT NAME LABELS ===== -->
+<text x="220"  y="310" text-anchor="middle" font-size="10" fill="#c0392b" font-weight="bold" font-family="Arial">START</text>
+<text x="300"  y="310" text-anchor="middle" font-size="10" fill="#1a3a8f" font-weight="bold" font-family="Arial">D0 (LSB)</text>
+<text x="380"  y="310" text-anchor="middle" font-size="10" fill="#1a3a8f" font-weight="bold" font-family="Arial">D1</text>
+<text x="460"  y="310" text-anchor="middle" font-size="10" fill="#1a3a8f" font-weight="bold" font-family="Arial">D2</text>
+<text x="540"  y="310" text-anchor="middle" font-size="10" fill="#1a3a8f" font-weight="bold" font-family="Arial">D3</text>
+<text x="620"  y="310" text-anchor="middle" font-size="10" fill="#1a3a8f" font-weight="bold" font-family="Arial">D4</text>
+<text x="700"  y="310" text-anchor="middle" font-size="10" fill="#1a3a8f" font-weight="bold" font-family="Arial">D5</text>
+<text x="780"  y="310" text-anchor="middle" font-size="10" fill="#1a3a8f" font-weight="bold" font-family="Arial">D6</text>
+<text x="860"  y="310" text-anchor="middle" font-size="10" fill="#1a3a8f" font-weight="bold" font-family="Arial">D7 (MSB)</text>
+<text x="940"  y="310" text-anchor="middle" font-size="10" fill="#1a7d45" font-weight="bold" font-family="Arial">STOP</text>
+
+<!-- ===== BIT VALUE BOXES ===== -->
+<!-- START: 0 -->
+<rect x="203" y="318" width="34" height="20" rx="4" fill="#fde8e8" stroke="#c0392b" stroke-width="1.2"/>
+<text x="220"  y="333" text-anchor="middle" font-size="13" fill="#c0392b" font-weight="bold" font-family="Courier New">0</text>
+<!-- D0: 1 -->
+<rect x="283" y="318" width="34" height="20" rx="4" fill="#dde5ff" stroke="#1a3a8f" stroke-width="1.2"/>
+<text x="300"  y="333" text-anchor="middle" font-size="13" fill="#1a3a8f" font-weight="bold" font-family="Courier New">1</text>
+<!-- D1: 0 -->
+<rect x="363" y="318" width="34" height="20" rx="4" fill="#dde5ff" stroke="#1a3a8f" stroke-width="1.2"/>
+<text x="380"  y="333" text-anchor="middle" font-size="13" fill="#1a3a8f" font-weight="bold" font-family="Courier New">0</text>
+<!-- D2: 0 -->
+<rect x="443" y="318" width="34" height="20" rx="4" fill="#dde5ff" stroke="#1a3a8f" stroke-width="1.2"/>
+<text x="460"  y="333" text-anchor="middle" font-size="13" fill="#1a3a8f" font-weight="bold" font-family="Courier New">0</text>
+<!-- D3: 0 -->
+<rect x="523" y="318" width="34" height="20" rx="4" fill="#dde5ff" stroke="#1a3a8f" stroke-width="1.2"/>
+<text x="540"  y="333" text-anchor="middle" font-size="13" fill="#1a3a8f" font-weight="bold" font-family="Courier New">0</text>
+<!-- D4: 0 -->
+<rect x="603" y="318" width="34" height="20" rx="4" fill="#dde5ff" stroke="#1a3a8f" stroke-width="1.2"/>
+<text x="620"  y="333" text-anchor="middle" font-size="13" fill="#1a3a8f" font-weight="bold" font-family="Courier New">0</text>
+<!-- D5: 0 -->
+<rect x="683" y="318" width="34" height="20" rx="4" fill="#dde5ff" stroke="#1a3a8f" stroke-width="1.2"/>
+<text x="700"  y="333" text-anchor="middle" font-size="13" fill="#1a3a8f" font-weight="bold" font-family="Courier New">0</text>
+<!-- D6: 1 -->
+<rect x="763" y="318" width="34" height="20" rx="4" fill="#dde5ff" stroke="#1a3a8f" stroke-width="1.2"/>
+<text x="780"  y="333" text-anchor="middle" font-size="13" fill="#1a3a8f" font-weight="bold" font-family="Courier New">1</text>
+<!-- D7: 0 -->
+<rect x="843" y="318" width="34" height="20" rx="4" fill="#dde5ff" stroke="#1a3a8f" stroke-width="1.2"/>
+<text x="860"  y="333" text-anchor="middle" font-size="13" fill="#1a3a8f" font-weight="bold" font-family="Courier New">0</text>
+<!-- STOP: 1 -->
+<rect x="923" y="318" width="34" height="20" rx="4" fill="#e4f7ec" stroke="#1a7d45" stroke-width="1.2"/>
+<text x="940"  y="333" text-anchor="middle" font-size="13" fill="#1a7d45" font-weight="bold" font-family="Courier New">1</text>
+
+<!-- ===== BINARY DECODE LINE ===== -->
+<rect x="100" y="350" width="980" height="22" rx="4" fill="#f5f5f5" stroke="#ddd" stroke-width="0.8"/>
+<text x="590" y="365" text-anchor="middle" font-size="11" fill="#333" font-family="Arial">
+  Reassemble MSB→LSB (D7 to D0):
+  <tspan font-family="Courier New" font-weight="bold" fill="#1a3a8f">  0  1  0  0  0  0  0  1  </tspan>
+  =  <tspan font-family="Courier New" font-weight="bold" fill="#1a3a8f">0x41</tspan>
+  =  <tspan font-family="Courier New" font-weight="bold" fill="#c0392b">'A'</tspan>
+  (ASCII 65)
+</text>
+
+<!-- ===== LEGEND BOX ===== -->
+<rect x="100" y="382" width="980" height="74" rx="5" fill="#fafafa" stroke="#ddd" stroke-width="1"/>
+
+<!-- Legend row 1 -->
+<line x1="118" y1="400" x2="148" y2="400" stroke="#d35400" stroke-width="1.2" stroke-dasharray="4,3"/>
+<circle cx="133" cy="400" r="4" fill="#d35400" stroke="white" stroke-width="1"/>
+<text x="156" y="404" font-size="10" fill="#444" font-family="Arial">↓ Sample Here = Mid-bit sampling point, at exactly ½ × bit period (52.08 μs) from the bit edge. RX samples here for max noise immunity.</text>
+
+<!-- Legend row 2: color key -->
+<rect x="118" y="416" width="13" height="11" fill="#eeeeee" stroke="#aaa" stroke-width="0.8"/>
+<text x="136" y="426" font-size="10" fill="#444" font-family="Arial">Idle (line HIGH)</text>
+
+<rect x="238" y="416" width="13" height="11" fill="#fde8e8" stroke="#c0392b" stroke-width="0.8"/>
+<text x="256" y="426" font-size="10" fill="#444" font-family="Arial">Start bit (always 0, pulls line LOW)</text>
+
+<rect x="448" y="416" width="13" height="11" fill="#dde5ff" stroke="#1a3a8f" stroke-width="0.8"/>
+<text x="466" y="426" font-size="10" fill="#444" font-family="Arial">Data bits D0–D7 (LSB sent first)</text>
+
+<rect x="650" y="416" width="13" height="11" fill="#e4f7ec" stroke="#1a7d45" stroke-width="0.8"/>
+<text x="668" y="426" font-size="10" fill="#444" font-family="Arial">Stop bit (always 1, returns line HIGH)</text>
+
+<!-- Legend row 3 -->
+<line x1="118" y1="443" x2="1075" y2="443" stroke="#eee" stroke-width="0.8"/>
+<text x="590" y="448" text-anchor="middle" font-size="9.5" fill="#888" font-family="Arial">
+  Wire state on transition: IDLE(1) → START(0) → D0(1) → D1(0) → D2(0) → D3(0) → D4(0) → D5(0) → D6(1) → D7(0) → STOP(1) → IDLE(1)
+</text>
+
+</svg>
