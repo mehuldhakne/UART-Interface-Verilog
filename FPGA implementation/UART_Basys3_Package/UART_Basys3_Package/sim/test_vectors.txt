@@ -1,0 +1,26 @@
+// UART Test Vectors — test_vectors.txt
+// Format  : Hexadecimal, one byte per line
+// Read by : $readmemh() in tb.v
+// ================================================
+// Test Pattern Design:
+//   0x55 = 0101 0101 — ASCII 'U' — alternating bits starting HIGH
+//   0x41 = 0100 0001 — ASCII 'A' — tests LSB and bit-6 only
+//   0x52 = 0101 0010 — ASCII 'R' — mixed transition pattern
+//   0x54 = 0101 0100 — ASCII 'T' — mixed transition pattern
+//   0xA5 = 1010 0101 — alternating complement of 0x55
+//   0x5A = 0101 1010 — walking bit pattern
+//   0xFF = 1111 1111 — all HIGH data bits (max stress)
+//   0x00 = 0000 0000 — all LOW data bits (zero edge case)
+//   0x0F = 0000 1111 — lower nibble HIGH, upper nibble LOW
+//   0xF0 = 1111 0000 — upper nibble HIGH, lower nibble LOW
+// ================================================
+55
+41
+52
+54
+A5
+5A
+FF
+00
+0F
+F0

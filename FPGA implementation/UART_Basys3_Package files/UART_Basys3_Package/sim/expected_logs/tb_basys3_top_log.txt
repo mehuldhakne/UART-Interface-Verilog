@@ -1,0 +1,52 @@
+
+=== STEP 1: single byte  sw=0x41, btnC (internal loopback) ===
+  PASS  LED[7:0] (RX byte) = 0x0041
+  PASS  7-seg [TX|RX]      = 0x4141
+  PASS  PC terminal got    = 0x0041
+
+=== STEP 2: word UART\r\n, btnL ===
+  PASS  PC got 'U' = 0x0055
+  PASS  PC got 'A' = 0x0041
+  PASS  PC got 'R' = 0x0052
+  PASS  PC got 'T' = 0x0054
+  PASS  PC got CR  = 0x000d
+  PASS  PC got LF  = 0x000a
+  PASS  LED[7:0] = last char (LF) = 0x000a
+
+=== STEP 3: hardware self-test, btnR (internal loopback) ===
+  PASS  LED[9:0] all PASS      = 0x03ff
+  PASS  LED[15:14] done+allOK  = 0x0003
+  PASS  7-seg [sent|passed] dec = 0x1010
+
+=== STEP 4: btnD clear ===
+  PASS  LEDs cleared   = 0x0000
+  PASS  7-seg cleared  = 0x0000
+
+=== STEP 5: jumper wire plugged  (sw[8]=1) single byte 0x5A ===
+  PASS  LED[7:0] via the wire = 0x005a
+
+=== STEP 6: self-test over the wire (plugged) ===
+  PASS  LED[9:0] all PASS = 0x03ff
+  PASS  LED[15:14]        = 0x0003
+
+=== STEP 7: PULL THE WIRE OUT, repeat self-test (must FAIL) ===
+  PASS  LED[9:0] all FAIL      = 0x0000
+  PASS  LED[15:14] done, !ok   = 0x0001
+  PASS  7-seg [sent|passed]    = 0x1000
+
+=== STEP 8: PC types 'K' (0x4B) -> FPGA receives, sw[9]=1 ===
+  PASS  LED[15:8] = PC byte = 0x004b
+  PASS  7-seg [PC byte|count] = 0x4b01
+
+=== STEP 9: ECHO  (sw[10]=1)  PC types 'Z' -> comes back ===
+  PASS  echo bytes received by PC = 0x0001
+  PASS  echoed byte                = 0x005a
+
+=== STEP 10: framing error (stop bit forced LOW) ===
+  PASS  decimal point lit (left digit) = 0x0001
+
+=======================================================
+ ALL 26 CHECKS PASSED
+=======================================================
+
+sim/tb_basys3_top.v:223: $finish called at 66966915004 (1ps)
